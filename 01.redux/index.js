@@ -3,7 +3,7 @@ const { createStore } = require('redux');
 /******** state ********/
 const states = {
   str: '',
-  obj: null,
+  obj: {},
 };
 
 /******** action creator ********/
@@ -42,3 +42,18 @@ const reducer = (prevState, { type, payload }) => {
 
 /******** reducer ********/
 const store = createStore(reducer, states);
+console.log(store);
+
+/* subscribe ************/
+store.subscribe(() => {
+  console.log('subscribe ===============');
+  console.log(store.getState());
+});
+
+/* dispatch ************/
+console.log('초기값 ===============');
+console.log(store.getState());
+
+store.dispatch({ type: 'ACT_STR', payload: 'B' });
+store.dispatch(actStr('C'));
+store.dispatch(actObj({ userid: 'booldook' }));
