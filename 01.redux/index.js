@@ -24,6 +24,7 @@ const actObj = (payload) => {
 /******** reducer ********/
 // 한개의 함수다.
 const reducer = (prevState, { type, payload }) => {
+  console.log('reducer');
   switch (type) {
     case 'ACT_STR':
       return {

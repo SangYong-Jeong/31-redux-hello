@@ -14,9 +14,11 @@ const userReducer = (prevState = init, { type, payload }) => {
     case 'LOG_OUT':
       return {
         ...prevState,
-        isLogin: false,
+        isLogIn: false,
         data: {},
       };
+    default:
+      return prevState;
   }
 };
 
