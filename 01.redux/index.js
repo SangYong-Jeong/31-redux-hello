@@ -23,7 +23,13 @@ const actObj = (payload) => {
 
 /******** reducer ********/
 // 한개의 함수다.
-const reducer = (prevState, { type, payload }) => {
+const reducer = (
+  prevState = {
+    str: '',
+    obj: {},
+  },
+  { type, payload }
+) => {
   console.log('reducer');
   switch (type) {
     case 'ACT_STR':
@@ -42,7 +48,7 @@ const reducer = (prevState, { type, payload }) => {
 };
 
 /******** reducer ********/
-const store = createStore(reducer, states);
+const store = createStore(reducer);
 console.log(store);
 
 /* subscribe ************/
