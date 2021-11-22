@@ -3,9 +3,8 @@ const { createStore } = require('redux');
 const state = require('./states');
 const reducer = require('./reducers');
 const { logIn, logOut, addPost, removePost } = require('./actions');
-console.log('post4');
+
 const store = createStore(reducer, state);
-console.log('post5');
 
 /* subscribe ***************/
 store.subscribe(() => {

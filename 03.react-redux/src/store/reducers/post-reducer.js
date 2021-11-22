@@ -10,5 +10,5 @@ const postReducer = (prevState = init, { type, payload }) => {
       return prevState;
   }
 };
-console.log('post1');
-module.exports = postReducer;
+
+export default postReducer;

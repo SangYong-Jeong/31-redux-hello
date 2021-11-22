@@ -1,11 +1,11 @@
-const { combineReducers } = require('redux');
+import { combineReducers } from 'redux';
 
-const user = require('./user-reducer');
-const post = require('./post-reducer');
+import user from './user-reducer';
+import post from './post-reducer';
 
 const reducer = combineReducers({ user, post });
 
-module.exports = reducer;
+export default reducer;
 
 // combineReducers함수의 인수로 들어가는 객체의 key값에 따라 그 함수가 다루는 state의 이름이 달라지게된다.
 // reducer라는 하나의 큰 함수를 쪼개는 개념 -> 하지만 하나로 합쳐져서 관리되는것은 맞다.
