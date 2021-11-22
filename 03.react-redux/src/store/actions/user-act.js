@@ -8,19 +8,25 @@
 
 import axios from 'axios';
 
-let userURL = 'https://jsonplaceholder.typicode.com/users?username=';
-
 const logIn = (payload) => {
   return async (dispatch, getState) => {
     try {
+      let userURL = 'https://jsonplaceholder.typicode.com/users?username=';
       console.log('=========');
-      userURL += payload.username;
+      userURL += payload;
       console.log(userURL);
       const { data } = await axios.get(userURL);
-      console.log(data);
+      dispatch(logOn(data[0]));
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+const logOn = (payload) => {
+  return {
+    type: 'LOG_ON',
+    payload,
   };
 };
 
