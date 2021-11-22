@@ -11,5 +11,5 @@ const removePost = (payload) => {
     payload, // id
   };
 };
-const postAction = { addPost, removePost };
-export default postAction;
+
+export { addPost, removePost };
