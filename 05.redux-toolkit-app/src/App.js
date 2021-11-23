@@ -1,55 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { useCallback } from 'react';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  logIn,
+  logOut,
+  getUser,
+  getUserData,
+  getAddress,
+} from './store/reducers/user-slice';
 
 function App() {
+  const { isLogOn } = useSelector(getUser);
+  const userData = useSelector(getUserData);
+  const userAddress = useSelector(getAddress);
+  const dispatch = useDispatch();
+
+  const onLogIn = () => {
+    dispatch(logIn('Delphine'));
+  };
+
+  const onLogOut = useCallback(() => {
+    dispatch(logOut());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+        <div>
+          {isLogOn
+            ? userData.username + ' 로그인 되었습니다.'
+            : '로그인 하세요.'}
+        </div>
+        <div>{userAddress}</div>
+        <div>
+          <div onClick={onLogIn}>로그인</div>
+          <div onClick={onLogOut}>로그아웃</div>
+        </div>
       </header>
     </div>
   );
